@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.mpstats.mpstats"
+    android:versionCode="1"
+    android:versionName="1.1.1" >
+
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application tools:ignore="GoogleAppIndexingWarning" >
+
+
+        <service
+            android:name="com.mpstats.mpstats.DataSender"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedService" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.mpstats.mpstats.InstallReferrerReceiver"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedReceiver" >
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

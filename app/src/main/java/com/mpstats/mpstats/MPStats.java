@@ -61,7 +61,7 @@ public class MPStats {
     }
     public static void activate (Activity activity, String appName) {
         SetDeepLink(activity);
-        BillingController controller = new BillingController();
+        //BillingController controller = new BillingController();
         activate(activity, new MPStatsConfig(appName));
     }
     static void SetDeepLink (Activity activity) {

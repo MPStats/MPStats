@@ -122,7 +122,7 @@ public class MPStatsData {
         if (apiKey.contains(" ")) {
             Utility.LogError("Project name can't containt spaces");
         }
-        return urlStart + apiKey;
+        return config.getUrlStart() + apiKey;
     }
 
     static String _UUID = null;
@@ -138,7 +138,4 @@ public class MPStatsData {
     }
     public static MPStatsConfig config;
     public static boolean startAdded = false;
-
-
-    public static final String urlStart = "https://mpstats.net/api/stats?projectName=";
 }

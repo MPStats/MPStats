@@ -59,6 +59,10 @@ public class MPStats {
         getInstance().SendStartIfNotYet();
         initialized = true;
     }
+    public static void activate (Activity activity, String appName, String url) {
+        SetDeepLink(activity);
+        activate(activity, new MPStatsConfig(appName, url));
+    }
     public static void activate (Activity activity, String appName) {
         SetDeepLink(activity);
         //BillingController controller = new BillingController();

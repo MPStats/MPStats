@@ -41,12 +41,12 @@ public class QueueSerializable extends AbstractIQueueSerializable implements IQu
     }
     @Override
     public void EnqueueFirst (IWebRequest item) {
-        Utility.LogError("ENQUEUE FIRST: " + item.data() + " NOW SIZE: " + queue.size());
+        Utility.LogError("ENQUEUE FIRST: url: " + item.url() + "| data: " + item.data() + " NOW SIZE: " + queue.size());
         queue.add(0, item);
     }
     @Override
     public void Enqueue(IWebRequest item) {
-        Utility.LogError("ENQUEUE: " + item.data() + " NOW SIZE: " + queue.size());
+        Utility.LogError("ENQUEUE: url: " + item.url() + "| data: " + item.data() + " NOW SIZE: " + queue.size());
         queue.add(item);
     }
 
@@ -61,7 +61,6 @@ public class QueueSerializable extends AbstractIQueueSerializable implements IQu
     private boolean CutData (String data) {
         double size = ConvertBytesToMegabytes(data.length());
         double overSize = size - mbMaxData;
-        Utility.LogError("CUT DATA. Size:" + size + " OVERSIZE: " + overSize);
         if (overSize > 0) {
             tempQueue = queue;
             tempQueue.subList(queue.size() / 2, queue.size() - 1).clear();

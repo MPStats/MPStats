@@ -71,12 +71,19 @@ public class ResponseResolver implements IResponseResolver {
     }
     public long ReportErrorGetTimeout (IWebRequest request, IQueue<IWebRequest> queue, int errorCode) {
         Utility.LogInfo("sent error: " + errorCode + " " + parseRequest.apply(request).getActionName());
-        String actionName = parseRequest.apply(request).getActionName();
+
         CheckSameEventError(request, queue, errorCode);
         if (droppedEventCurrent >= droppedEventMax) {
             return Long.MAX_VALUE;
         }
-        actionName = parseRequest.apply(queue.Peek()).getActionName();
+
+        IWebRequest nextRequest = queue.Peek();
+        String actionName = "";
+        if (nextRequest != null) {
+            actionName = parseRequest.apply(nextRequest).getActionName();
+        }
+
+
         CheckCantSentInstall(actionName);
         if (!MPStatsData.getInstallSent()) {
             // SDK think that install NOT sent

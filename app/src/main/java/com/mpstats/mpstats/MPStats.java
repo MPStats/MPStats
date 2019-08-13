@@ -141,9 +141,9 @@ public class MPStats {
     };
 
 
-    public static void ReportPurchasePage (String purchaseSKU) {
+    public static void ReportPurchasePage (String referrer) {
         if (initialized) {
-            StatisticsElement statElement = new StatisticsElement(MPStatsData.config.getApiKey(), DefaultEventNames.PurchasePage, purchaseSKU);
+            StatisticsElement statElement = new StatisticsElement(MPStatsData.config.getApiKey(), DefaultEventNames.PurchasePage, referrer);
             getInstance().Send(MPStatsData.getEndPoint(), statElement.toString(), false);
         }
     }
@@ -161,9 +161,9 @@ public class MPStats {
     }
 
 
-    public static void ReportSubscribePage (String subscribeSKU) {
+    public static void ReportSubscribePage (String referrer) {
         if (initialized) {
-            StatisticsElement statElement = new StatisticsElement(MPStatsData.config.getApiKey(), DefaultEventNames.SubscribePage, subscribeSKU);
+            StatisticsElement statElement = new StatisticsElement(MPStatsData.config.getApiKey(), DefaultEventNames.SubscribePage, referrer);
             getInstance().Send(MPStatsData.getEndPoint(), statElement.toString(), false);
         }
     }
@@ -175,7 +175,7 @@ public class MPStats {
     }
     public static void ReportSubscribeDone (String receipt) {
         if (initialized) {
-            StatisticsElement statElement = new StatisticsElement(MPStatsData.config.getApiKey(), receipt, false);
+            StatisticsElement statElement = new StatisticsElement(MPStatsData.config.getApiKey(), receipt, true);
             getInstance().Send(MPStatsData.getEndPoint(), statElement.toString(), false);
         }
     }
